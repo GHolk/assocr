@@ -1,0 +1,25 @@
+{
+  "name": "assocr",
+  "version": "1.0.0",
+  "description": "upload image to flickr and embed by js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GHolk/assocr.git"
+  },
+  "keywords": [
+    "flickr",
+    "javascript",
+    "embed",
+    "image"
+  ],
+  "author": "gholk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GHolk/assocr/issues"
+  },
+  "homepage": "https://github.com/GHolk/assocr#readme"
+}
