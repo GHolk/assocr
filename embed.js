@@ -77,11 +77,11 @@ flk.gn = flk.getNode
 flk.fig = function (name, text) {
     const fig = document.createElement('figure')
     const img = this.getNode(name)
-    fillNode(fig, img)
+    fig.appendChild(img)
     
     const caption = document.createElement('figcaption')
-    fillNode(caption, text)
-    fillNode(fig, caption)
+    caption.textContent = text
+    fig.appendChild(caption)
     return fig
 }
 
