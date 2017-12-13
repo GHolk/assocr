@@ -128,13 +128,14 @@ document.body.append(flk.gn(/113/))
 
 // use g flag to get numbers image
 let imageList = flk.gn(/jpg$/g)
+</script>
 ```
 
 SEE ALSO
 --------
-[marked-man](https://github.com/kapouer/marked-man)
-[node-flickrapi](https://github.com/Pomax/node-flickrapi)
-[optimist](https://github.com/substack/node-optimist)
+* [marked-man](https://github.com/kapouer/marked-man)
+* [node-flickrapi](https://github.com/Pomax/node-flickrapi)
+* [optimist](https://github.com/substack/node-optimist)
 
 REPORTING BUGS
 --------------
