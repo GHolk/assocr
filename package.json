@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+ssh://git@github.com/GHolk/assocr.git"
   },
+  "dependencies": {
+    "optimist": "0.6.1",
+    "flickr-api": "0.6.1"
+  },
   "keywords": [
     "flickr",
     "javascript",
