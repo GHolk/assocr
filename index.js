@@ -78,7 +78,19 @@ class EmbedInfo {
 
         return new this(farm, server, photo, secret)
     }
+    toImageUrl() {
+        const protocol = this.constructor.protocol
+        const {farm,server,photo,secret,user} = this
+        return `${protocol}://${farm}.staticflickr.com` +
+               `/${server}/${photo}_${secret}.jpg`
+    }
+    toPageUrl() {
+        const protocol = this.constructor.protocol
+        const {farm,server,photo,secret,user} = this
+        return `${protocol}://www.flickr.com/photos/${user}/${photo}`
+    }
 }
+EmbedInfo.protocol = 'http'
 
 const argv = require('optimist')
 argv.usage('upload images to flickr.\n' +
@@ -139,10 +151,7 @@ else if (pathList.length > 0) {
     }
 
     fp.upload(uploadOption, apiOption)
-        .then((result) => {
-            logJson(pathList)
-            return result
-        }).catch((authError) => {
+        .catch((authError) => {
             console.error(authError)
         }).then((photoIds) => {
             return fp.authenticate(apiOption).then(() => photoIds)
@@ -155,14 +164,16 @@ else if (pathList.length > 0) {
             const embedInfos = infos.map(
                 (info) => EmbedInfo.fromInfo(info.photo)
             )
-            logJson(embedInfos)
+            const markdownReferences = embedInfos.map(
+                (info, i) => `[${pathList[i]}]: ${info.toImageUrl()}\n` +
+                             `[![${pathList[i]}]]: ${info.toPageUrl()}\n`
+            )
+            console.log(pathList.map((path) => `[![${path}]]`).join('\n'))
+            console.log('')
+            console.log(markdownReferences.join('\n'))
             process.exit()
         })
 }
 else {
     console.log(argv.help())
-}
-
-function logJson(object) {
-    console.log(JSON.stringify(object))
 }
