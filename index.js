@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
-const child_process = require('child_process')
 const getTokenCommand = 'pass show application/assocr'
+const workDirectory = '/home/gholk/Pictures'
+
+const child_process = require('child_process')
+const Path = require('path')
 
 const apiOption = {
     api_key: 'e6fd511f93fccd0f7c34a54055e41214',
@@ -14,6 +17,8 @@ const apiOption = {
 
 class Flickrp {
     constructor() {
+        this.originDirectory = process.env.PWD
+        process.chdir(workDirectory)
         this.flickrcb = require('flickrapi')
     }
     authenticate(option) {
@@ -135,7 +140,9 @@ else if (pathList.length > 0) {
         )
     }
 
-    const photoList = pathList.map((path) => new Photo(path, photoOption))
+    const photoList = pathList
+          .map(path => Path.resolve(fp.originDirectory, path))
+          .map((path) => new Photo(path, photoOption))
 
     const token = child_process.execSync(getTokenCommand, {encoding: 'utf8'})
     const rows = token.split(/\n/g)
