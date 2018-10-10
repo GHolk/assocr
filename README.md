@@ -38,10 +38,10 @@ sudo npm i assocr -g
 ### MANUAL
 ```
 git clone http://github.com/GHolk/assocr
-vi index.js  # edit apiOption user_id field to your user id.
 cp index.js /usr/bin/assocr
 assocr --login  # output user-id, access-token, tocken-secret
 pass add -m application/assocr <<ASSOCR
+user_id    123456789@A12
 access_token    12345678901234567-1234567890123456
 access_token_secret     abcdefg123456789
 ASSOCR

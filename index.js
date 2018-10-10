@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const getTokenCommand = 'pass show application/assocr'
-const workDirectory = '/home/gholk/Pictures'
+const workDirectory = process.env['HOME'] + '/Pictures'
 
 const child_process = require('child_process')
 const Path = require('path')
@@ -9,7 +9,6 @@ const Path = require('path')
 const apiOption = {
     api_key: 'e6fd511f93fccd0f7c34a54055e41214',
     secret: '745849c2772c3aa9',
-    user_id: '135370742@N08',
     access_token: null,
     access_token_secret: null,
     permissions: 'write'
